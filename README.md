@@ -1,2 +1,2 @@
-# basic-webpack-setup
-Basic webpack setup to test ES6
+# Se puede observar el proyecto en 
+https://www.youtube.com/watch?v=wigRkQXiWRE
