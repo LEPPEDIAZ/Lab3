@@ -15,7 +15,7 @@ const state = {
   
     const totito = document.createElement('div');
     totito.className = 'totito';
-  
+
     const nextBtn = document.createElement('button');
     nextBtn.className = 'nextBtn';
     nextBtn.innerHTML = 'siguiente posicion';
@@ -27,15 +27,11 @@ const state = {
     const nuevo = document.createElement('button');
     nuevo.className = 'nuevo';
     nuevo.innerHTML = 'siguiente turno';
+
+          
   
-    const turnoContainer = document.createElement('div');
-    turnoContainer.className = 'turno';
-    turnoContainer.innerHTML = 'es el turno de:';
-  
-    const turnoIndicator = document.createElement('img');
-      turnoIndicator.src = (lState.currentPlayer) ? "../img/X.png" : "../img/O.png";
-      turnoContainer.appendChild(turnoIndicator);
-  
+   
+
   
   
     // Clear previous root content
@@ -46,10 +42,11 @@ const state = {
     // Main rendering
     root.appendChild(title);
     root.appendChild(totito);
+    rott.appendChild(addmas);
     root.appendChild(nextBtn);
     root.appendChild(aceptarturno);
     root.appendChild(nuevo);
-    root.appendChild(turnoContainer);
+ 
   
     const lightElements = lState.lights.map(
       (lightColor, i, j) => {
@@ -100,6 +97,7 @@ const state = {
       lState.currentLight = (lState.currentLight + 1) % lState.lights.length;
       render(lState);
     };
+
   }
     
   
