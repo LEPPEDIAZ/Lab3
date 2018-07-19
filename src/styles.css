@@ -78,8 +78,19 @@ h1 {
   margin-bottom: 3rem;
   border-radius: 1rem;
 }
+.next {
+  display: inline-block;
+  font-size: 1rem;
+  padding: 1rem 0;
+  text-align: center;
+  width: 20rem;
+  background-color: darkorange;
+  color:white;
+  border-radius: 1rem;
+}
+
 .turnoContainer {
-  margin-top: 10rem;
+  margin-top: 3rem;
   font-size: 1rem;
   padding: 1rem 0;
   text-align: center;
@@ -95,7 +106,7 @@ h1 {
   padding: 1rem 0;
   text-align: center;
   width: 30rem;
-  background-color: darkgoldenrod;
+  background-color: darkorange;
   color:white;
   border-radius: 1rem;
 }
