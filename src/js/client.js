@@ -14,10 +14,7 @@ const state = {
   const render = lState => {
     const title = document.createElement('h1');
     title.innerHTML = 'TAREAS';
-  
-    const totito = document.createElement('div');
-    totito.className = 'totito';
-  
+
     const nextBtn = document.createElement('button');
     nextBtn.className = 'nextBtn';
     nextBtn.innerHTML = 'ALL';
@@ -33,10 +30,14 @@ const state = {
     const turnoContainer = document.createElement('input');
     turnoContainer.className = 'turnoContainer';
  
-  
     const search = document.createElement('button');
     search.className = 'search';
     search.innerHTML = 'ADD';
+  
+    const totito = document.createElement('div');
+    totito.className = 'totito';
+  
+    
 
   
   
@@ -46,18 +47,19 @@ const state = {
     }
     // creacion de containers
     root.appendChild(title);
-    root.appendChild(totito);
     root.appendChild(nextBtn);
     root.appendChild(aceptarturno);
     root.appendChild(nuevo);
+    root.appendChild(totito);
     root.appendChild(turnoContainer);
     root.appendChild(search);
+    
 
     const lightElements = lState.quierover.map(
       (lightColor, i, j) => {
         const lightElement = document.createElement('ul');
         lightElement.className = `light ${lightColor}`;
-  
+    
         if (i === lState.currentLight) {
           lightElement.classList.add('on');
           
@@ -71,6 +73,7 @@ const state = {
     lightElements.forEach(
       lightElement => totito.appendChild(lightElement)
     );
+   
   
   
     // Events
@@ -86,6 +89,7 @@ const state = {
       lState.currentLight = (lState.currentLight + 1) % lState.quierover.length;
       render(lState);
     };
+
   }
     
   
