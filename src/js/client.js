@@ -55,25 +55,22 @@ const render = lState => {
   nuevo.innerHTML = 'ACTIVE';
 
 
-
-  const turnoContainer = document.createElement('input');
-
-  turnoContainer.className = 'turnoContainer';
-  
-
-
-
   const search = document.createElement('button');
 
   search.className = 'search';
 
-  search.innerHTML = 'ADD';
+  search.innerHTML = 'Agregar nueva tarea';
 
 
 
   const totito = document.createElement('div');
 
   totito.className = 'totito';
+
+  const turnoContainer = document.createElement('input');
+
+  turnoContainer.className = 'turnoContainer';
+  
 
 
   const next = document.createElement('button');
@@ -114,7 +111,7 @@ const render = lState => {
 
   root.appendChild(totito);
 
-  root.appendChild(turnoContainer);
+  //root.appendChild(turnoContainer);
 
   root.appendChild(search);
 
@@ -135,9 +132,7 @@ const render = lState => {
       if (i === lState.currentLight) {
 
         lightElement.classList.add('on');
-
-        
-
+      
       }
 
       return lightElement;
@@ -158,11 +153,6 @@ const render = lState => {
 
   );
 
- 
-
-
-
-
 
   // Events
 
@@ -174,10 +164,9 @@ const render = lState => {
 
   };
   search.onclick = () => {
-
     lState.currentLight = (lState.currentLight + 1) % lState.quierover.length;
+    const texto = prompt('Esciba lo que desea enviar al sistema');
     render(lState);
-    var texto = prompt('Esciba lo que desea enviar al sistema');
   };
 
   aceptarturno.onclick = () => {
