@@ -4,7 +4,7 @@
 
 const state = {
 
-  quierover: ['h1', 'h2', 'h3','h4'],
+  quierover: ['h1', 'h2', 'h3','h4','h5'],
 
   currentLight: 0,
 
@@ -59,6 +59,7 @@ const render = lState => {
   const turnoContainer = document.createElement('input');
 
   turnoContainer.className = 'turnoContainer';
+  
 
 
 
@@ -171,6 +172,12 @@ const render = lState => {
 
     render(lState);
 
+  };
+  search.onclick = () => {
+
+    lState.currentLight = (lState.currentLight + 1) % lState.quierover.length;
+    render(lState);
+    var texto = prompt('Esciba lo que desea enviar al sistema');
   };
 
   aceptarturno.onclick = () => {
