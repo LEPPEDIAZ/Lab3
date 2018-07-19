@@ -31,20 +31,12 @@ const state = {
     nuevo.innerHTML = 'ACTIVE';
 
     const turnoContainer = document.createElement('input');
-    turnoContainer.className = 'turno';
-    turnoContainer.innerHTML = 'es el turno de:';
-    
-
+    turnoContainer.className = 'turnoContainer';
+ 
+  
     const search = document.createElement('button');
     search.className = 'search';
     search.innerHTML = 'ADD';
-
-    
-
-
-    
-    
-
 
   
   
@@ -52,15 +44,28 @@ const state = {
     if (root.hasChildNodes()) {
       root.innerHTML = null;
     }
-  
-    // Main rendering
+    // creacion de containers
     root.appendChild(title);
     root.appendChild(totito);
     root.appendChild(nextBtn);
     root.appendChild(aceptarturno);
     root.appendChild(nuevo);
-    root.appendChild(search);
     root.appendChild(turnoContainer);
+    root.appendChild(search);
+
+    const lightElements = lState.quierover.map(
+      (lightColor, i, j) => {
+        const lightElement = document.createElement('ul');
+        lightElement.className = `light ${lightColor}`;
+  
+        if (i === lState.currentLight) {
+          lightElement.classList.add('on');
+          
+        }
+        return lightElement;
+      }
+    );
+  
     
   
     lightElements.forEach(
