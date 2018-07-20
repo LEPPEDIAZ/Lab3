@@ -21,31 +21,24 @@ h1 {
 }
 
 .light {
+  display: inline-block;
   background: white;
-  height: 3rem;
-  margin-right: 40rem;
-  width: 20rem;
-  border-radius: 1rem;
+  height: 5rem;
+  margin-right: 8rem;
+  width: 2rem;
+  border-radius: 20rem;
   background-color: #E8E8E8;
+  margin-left: 2rem;
  
 }
-.light1 {
-  height: 3rem;
-  margin-bottom: 10rem;
-  margin-left: 5rem;
-  opacity: 0.5;
-  width: 10rem;
-  margin-bottom: 1rem;
+
+.light7 {
+  opacity: 5.0;
 }
 
 .light.on {
-  opacity: 1.0;
-  width: 20rem;
-  margin-bottom: 1rem;
-  background: olivedrab;
-  margin-right: 40rem;
-  height: 3rem;
-  border-radius: 1rem;
+  
+  background-color: greenyellow;
 
 }
 .light.off {
@@ -58,6 +51,7 @@ h1 {
 
 .light:last-child {
   margin-bottom: 0;
+  opacity: 5.0;
 }
 
 .light.seleccionado { 
