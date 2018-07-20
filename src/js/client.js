@@ -113,7 +113,7 @@ const render = lState => {
 
   //root.appendChild(turnoContainer);
 
-  root.appendChild(search);
+  //root.appendChild(search);
 
   
 
@@ -165,13 +165,12 @@ const render = lState => {
   };
   search.onclick = () => {
     lState.currentLight = (lState.currentLight + 1) % lState.quierover.length;
-    const texto = prompt('Esciba lo que desea enviar al sistema');
+    addItem();
+    //const texto = prompt('Esciba lo que desea enviar al sistema');
     render(lState);
   };
 
   aceptarturno.onclick = () => {
-
-    lState.currentLight = (lState.currentLight) % lState.quierover.length;
 
     render(lState);
 
