@@ -116,6 +116,16 @@ h1 {
   color:white;
   border-radius: 1rem;
 }
+.aceptar {
+  display: inline-block;
+  font-size: 1rem;
+  padding: 1rem 0;
+  text-align: center;
+  width: 30rem;
+  background-color:darkolivegreen;
+  color:white;
+  border-radius: 1rem;
+}
 .nuevo {
   display: inline-block;
   font-size: 1rem;
@@ -143,28 +153,28 @@ h1 {
 .Totito>div{
   display: block;
   line-height: 0;
-  background: url('../img/PASCAL.jpg');
-  width: 36rem;
+  width: 60rem;
+  align-content: center;
   
 }
 
 .Totito>div>div{
   border: solid 16px #808000;
-  display: inline-block;
   opacity: 0.7;
-  height: 10rem;
-  width: 10rem;
+  height: 3rem;
+  width: 3rem;
+  
 
 }
 .Totito>div>div.x{
-  background-image: url("../img/x.png");
+  background-image: url("../img/checkbox.png");
   background-size: contain;
-  background-color: darkgoldenrod;
+  background-color: darkolivegreen;
   opacity:1;
 
 }
 .Totito>div>div.o{
-  background-image: url("../img/o.png");
+  background-image: url("../img/checkbox.png");
   background-size: contain;
   background-color: darkolivegreen;
   opacity:1;

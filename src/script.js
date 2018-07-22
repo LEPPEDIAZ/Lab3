@@ -13,3 +13,12 @@ function removeItem(){
     var item = document.getElementById(candidate.value);
     ul.removeChild(item);
 }
+function myFunction() {
+    var checkBox = document.getElementById("dynamic-list");
+    var text = document.getElementById("text");
+    if (checkBox.checked == true){
+        text.style.display = "block";
+    } else {
+       text.style.display = "none";
+    }
+}

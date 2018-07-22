@@ -1,44 +1,52 @@
-//Ana lucia Diaz Leppe
-
+//Ana lucia Diaz 
 //151378
+//pinta la diagonal
 
-const state = {
 
-  quierover: ['h1', 'h2', 'h3','h4','h5', 'h6'],
-
-  currentLight: 0,
-
-};
-
-const buildInitialState = (len) => {
-
+const EstadoInicial = (len) => {
   return ({
-
-      statusMap: Array.from({length: len}, (x, i) => Array.from({length: len}, (y, j) => null)),
-
-      currentPlayer: 0,
-
-      winner: null
-
+      arreglodelmapa: Array.from({length: len}, (x, i) => Array.from({length: len}, (y, j) => null)),
+      ganadora: null,
+      jugadoractual: 0
+     
   });
+};
+const columna = (colIndice, matriz) => {
+const memoria = matriz.map((column) => {
+    return column[colIndice]
+});
+console.log(memoria);
 
+if (memoria.reduce((a, b) => {
+        return (a === b) ? a : null;
+    }) !== null) {
+    ganadora = memoria[0];
+}
+};
+const fila = (filaI, matriz) => {
+  console.log(matriz[filaI]);
+  if (!matriz[filaI].includes(null)) {
+      if (matriz[filaI].reduce((a, b) => {
+              return (a === b) ? a : null;
+          }) !== null) {
+          ganadora = matriz[filaI][0];
+      }
+  }
 };
 
-const render = lState => {
 
+let ganadora = null;
+
+const render = (lState) => {
   const title = document.createElement('h1');
 
   title.innerHTML = 'TAREAS';
-
-
 
   const nextBtn = document.createElement('button');
 
   nextBtn.className = 'nextBtn';
 
   nextBtn.innerHTML = 'ALL';
-
-
 
   const aceptarturno = document.createElement('button');
 
@@ -47,159 +55,80 @@ const render = lState => {
   aceptarturno.innerHTML = 'COMPLETED';
 
 
+  const aceptar = document.createElement('button');
 
-  const nuevo = document.createElement('button');
+  aceptar.className = 'aceptar';
 
-  nuevo.className = 'nuevo';
+  aceptar.innerHTML = 'ACTIVE';
+ 
 
-  nuevo.innerHTML = 'ACTIVE';
-
-
-  const search = document.createElement('button');
-
-  search.className = 'search';
-
-  search.innerHTML = 'Agregar nueva tarea';
-
-
-
+  const ContenedorDeJuego = document.createElement('div');
+  
   const totito = document.createElement('div');
-
-  totito.className = 'totito';
-
-  const turnoContainer = document.createElement('input');
-
-  turnoContainer.className = 'turnoContainer';
-  
-
-
-  const next = document.createElement('button');
-
-  next.className = 'next';
-
-  next.innerHTML = 'presionar para escoger casilla';
-
-
+  totito.className = 'Totito';
+  const nuevo = document.createElement('button');
+  nuevo.className= ' nuevo';
+  nuevo.innerHTML = 'REINICIAR JUEGO';
 
   
 
-
-
-
-
-
-
-  // Clear previous root content
-
+  // Propiedad para borrar
   if (root.hasChildNodes()) {
-
-    root.innerHTML = null;
-
+      root.innerHTML = null;
   }
 
-  // creacion de containers
-
+  //creacion de containers
   root.appendChild(title);
-
   root.appendChild(nextBtn);
-
   root.appendChild(aceptarturno);
-
-  root.appendChild(nuevo);
-
-  root.appendChild(next);
-
+  root.appendChild(aceptar);
   root.appendChild(totito);
-
-  //root.appendChild(turnoContainer);
-
-  //root.appendChild(search);
-
+  
+  
   
 
-
-
-  const lightElements = lState.quierover.map(
-
-    (lightColor, i, j) => {
-
-      const lightElement = document.createElement('ul');
-
-      lightElement.className = `light ${lightColor}`;
-
   
+  lState.arreglodelmapa.forEach(
+      (column, filaI) => {
+          //se crea el div del tamano definido
+          const rowElement = document.createElement('div');
+          column.forEach(
+              (col, colIndice) => {
+                  //se crea el div del tablero y se definen las lineas
+                  const tablero = document.createElement('div');
+                  if (ganadora === null) {
+                    tablero.onclick = () => {
+                        //se crea la opcion de x y y, para el cambio de variables
+                          if (lState.arreglodelmapa[filaI][colIndice] === null) {
+                              //se define el div.o y div.x para sacar la imagen
+                              tablero.classList.add((lState.jugadoractual) ? 'o' : 'x');
+                              lState.arreglodelmapa[filaI][colIndice] = lState.jugadoractual;
+                              lState.jugadoractual = (lState.jugadoractual === 0) ? 1 : 0;
+                              render(lState); //valida el cambio de x a y 
+                              //verganadorfila(lState.arreglodelmapa);
+                              //verganadorcolumna(lState.arreglodelmapa);
+                              //verganadordiagonal(lState.arreglodelmapa);
 
-      if (i === lState.currentLight) {
-
-        lightElement.classList.add('on');
-      
+                  
+                          } 
+                      };
+                  }
+                  if (lState.arreglodelmapa[filaI][colIndice] !== null) {
+                      tablero.classList.add((lState.arreglodelmapa[filaI][colIndice]) ? 'o' : 'x');
+                    }
+                  rowElement.appendChild(tablero);
+              }
+          );
+          totito.appendChild(rowElement);
       }
-
-      return lightElement;
-
-    }
-
   );
-
-
-
-  
-
-
-
-  lightElements.forEach(
-
-    lightElement => totito.appendChild(lightElement)
-
-  );
-
-
-  // Events
-
-  nextBtn.onclick = () => {
-
-    lState.currentLight = (lState.currentLight + 1) % lState.quierover.length;
-
-    render(lState);
-
-  };
-  search.onclick = () => {
-    lState.currentLight = (lState.currentLight + 1) % lState.quierover.length;
-    addItem();
-    //const texto = prompt('Esciba lo que desea enviar al sistema');
-    render(lState);
-  };
-
-  aceptarturno.onclick = () => {
-
-    render(lState);
-
-  };
 
   nuevo.onclick = () => {
-
-    lState.currentLight = (lState.currentLight + 1) % lState.quierover.length;
-
-    render(lState);
-
-  };
-  next.onclick = () => {
-
-    lState.currentLight = (lState.currentLight + 1) % lState.quierover.length;
-
-    render(lState);
-
-  };
-
-
-
-}
-
+      ganadora = null; 
+      render(EstadoInicial(lState.arreglodelmapa.length));
+      alert("SE A REINICIADO EL JUEGO");
+    };
   
-
-
-
-
-
-render(state);
+};
+render(EstadoInicial(2));
   
